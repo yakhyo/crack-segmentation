@@ -8,9 +8,9 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from unet.models import UNet
-from unet.utils.dataset import RoadCrack
-from unet.utils.losses import DiceCELoss, DiceLoss, FocalLoss, CrossEntropyLoss
+from crackseg.models import UNet
+from crackseg.utils.dataset import RoadCrack
+from crackseg.utils.losses import DiceCELoss, DiceLoss, FocalLoss, CrossEntropyLoss
 
 
 def strip_optimizers(f: str):
@@ -133,7 +133,7 @@ def parse_opt():
     parser.add_argument("--image_size", type=int, default=448, help="Input image size, default: 512")
     parser.add_argument("--save-dir", type=str, default="weights", help="Directory to save weights")
     parser.add_argument("--epochs", type=int, default=10, help="Number of epochs, default: 5")
-    parser.add_argument("--batch-size", type=int, default=8, help="Batch size, default: 12")
+    parser.add_argument("--batch-size", type=int, default=16, help="Batch size, default: 12")
     parser.add_argument("--lr", type=float, default=1e-5, help="Learning rate, default: 1e-5")
     parser.add_argument("--weights", type=str, default="", help="Pretrained model, default: None")
     parser.add_argument("--amp", action="store_true", help="Use mixed precision")

@@ -6,7 +6,7 @@ import numpy as np
 import torch
 
 from PIL import Image, ImageOps
-from unet.models import UNet
+from crackseg.models import UNet
 
 
 def preprocess(image, is_mask):
