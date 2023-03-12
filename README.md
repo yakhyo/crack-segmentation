@@ -1,8 +1,8 @@
 # Road Crack Segmentation
 
 <div align="center">
-<img src="./assets/image.jpg">
-<img src="./assets/output.jpg">
+<img src="./assets/image.jpg" width="400px">
+<img src="./assets/output.jpg" width="400px">
 </div>
 
 Briefly introduce your project in a sentence or two.
