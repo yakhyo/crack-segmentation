@@ -4,9 +4,9 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+from crackseg.models import UNet
 
 from PIL import Image, ImageOps
-from crackseg.models import UNet
 
 
 def preprocess(image, is_mask):
