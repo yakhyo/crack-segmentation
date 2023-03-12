@@ -1,5 +1,5 @@
 exclude: 'docs/'
-repos: 
+repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
@@ -7,10 +7,8 @@ repos:
       - id: check-yaml
       - id: check-toml
       - id: mixed-line-ending
-        args: [--fix=lf]
+        args: [ --fix=lf ]
       - id: end-of-file-fixer
-      - id: no-commit-to-branch
-        args: ['--branch', 'main'] # by default master and main branch are protected if no branch argument set
 
   - repo: https://github.com/omnilib/ufmt
     rev: v1.3.2
@@ -24,7 +22,7 @@ repos:
     rev: 6.0.0
     hooks:
       - id: flake8
-        args: [--config=setup.cfg]
+        args: [ --config=setup.cfg ]
         name: PEP8
 
   - repo: https://github.com/PyCQA/pydocstyle
