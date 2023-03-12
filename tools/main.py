@@ -5,12 +5,12 @@ from copy import deepcopy
 
 import torch
 import torch.nn.functional as F
-from torch.utils.data import DataLoader
-from tqdm import tqdm
 
 from crackseg.models import UNet
 from crackseg.utils.dataset import RoadCrack
-from crackseg.utils.losses import DiceCELoss, DiceLoss, FocalLoss, CrossEntropyLoss
+from crackseg.utils.losses import CrossEntropyLoss, DiceCELoss, DiceLoss, FocalLoss
+from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 
 def strip_optimizers(f: str):
@@ -86,9 +86,7 @@ def train(opt, model, device):
 
             epoch_loss += loss.item()
             mem = f"{torch.cuda.memory_reserved() / 1E9 if torch.cuda.is_available() else 0:.3g}G"  # (GB)
-            progress_bar.set_description(
-                ("%12s" * 2 + "%12.4g") % (f"{epoch + 1}/{opt.epochs}", mem, loss)
-            )
+            progress_bar.set_description(("%12s" * 2 + "%12.4g") % (f"{epoch + 1}/{opt.epochs}", mem, loss))
 
         dice_score, dice_loss = validate(model, test_loader, device)
         logging.info(f"VALIDATION: Dice Score: {dice_score:.4f}, Dice Loss: {dice_loss:.4f}")

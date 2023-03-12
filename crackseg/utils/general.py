@@ -62,5 +62,3 @@ class RandomHorizontalFlip:
             image = F.hflip(image)
             target = F.hflip(target)
         return image, target
-
-
