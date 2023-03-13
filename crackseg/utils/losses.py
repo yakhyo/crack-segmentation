@@ -12,10 +12,10 @@ class CrossEntropyLoss(nn.Module):
     """Cross Entropy Loss"""
 
     def __init__(
-        self,
-        class_weights: Optional[torch.Tensor] = None,
-        reduction: str = "mean",
-        loss_weight: float = 1.0,
+            self,
+            class_weights: Optional[torch.Tensor] = None,
+            reduction: str = "mean",
+            loss_weight: float = 1.0,
     ):
         super().__init__()
         self.class_weight = class_weights
@@ -23,11 +23,11 @@ class CrossEntropyLoss(nn.Module):
         self.loss_weight = loss_weight
 
     def forward(
-        self,
-        inputs: torch.Tensor,
-        targets: torch.Tensor,
-        weight: Optional[torch.Tensor] = None,
-        ignore_index: int = -100,
+            self,
+            inputs: torch.Tensor,
+            targets: torch.Tensor,
+            weight: Optional[torch.Tensor] = None,
+            ignore_index: int = -100,
     ):
         loss = self.loss_weight * cross_entropy(
             inputs, targets, weight, class_weight=self.class_weight, reduction=self.reduction, ignore_index=ignore_index
@@ -38,10 +38,10 @@ class CrossEntropyLoss(nn.Module):
 
 class DiceLoss(nn.Module):
     def __init__(
-        self,
-        reduction: str = "mean",
-        loss_weight: Optional[float] = 1.0,
-        eps: float = 1e-5,
+            self,
+            reduction: str = "mean",
+            loss_weight: Optional[float] = 1.0,
+            eps: float = 1e-5,
     ):
         super().__init__()
         self.reduction = reduction
@@ -49,10 +49,10 @@ class DiceLoss(nn.Module):
         self.eps = eps
 
     def forward(
-        self,
-        inputs: torch.Tensor,
-        targets: torch.Tensor,
-        weight: Optional[torch.Tensor] = None,
+            self,
+            inputs: torch.Tensor,
+            targets: torch.Tensor,
+            weight: Optional[torch.Tensor] = None,
     ):
         loss = self.loss_weight * dice_loss(inputs, targets, weight=weight, reduction=self.reduction, eps=self.eps)
 
@@ -61,11 +61,11 @@ class DiceLoss(nn.Module):
 
 class DiceCELoss(nn.Module):
     def __init__(
-        self,
-        reduction: str = "mean",
-        dice_weight: float = 1.0,
-        ce_weight: float = 1.0,
-        eps: float = 1e-5,
+            self,
+            reduction: str = "mean",
+            dice_weight: float = 1.0,
+            ce_weight: float = 1.0,
+            eps: float = 1e-5,
     ):
         super().__init__()
         self.reduction = reduction
@@ -95,10 +95,10 @@ class FocalLoss(nn.Module):
         self.loss_weight = loss_weight
 
     def forward(
-        self,
-        inputs: torch.Tensor,
-        targets: torch.Tensor,
-        weight: Optional[torch.Tensor] = None,
+            self,
+            inputs: torch.Tensor,
+            targets: torch.Tensor,
+            weight: Optional[torch.Tensor] = None,
     ):
         loss = self.loss_weight * sigmoid_focal_loss(
             inputs, targets, weight, gamma=self.gamma, alpha=self.alpha, reduction=self.reduction
