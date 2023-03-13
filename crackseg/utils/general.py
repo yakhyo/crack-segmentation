@@ -5,6 +5,12 @@ import torch
 from torchvision.transforms import functional as F
 
 
+def random_seed(seed=42):
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+
+
 class Augmentation:
     """Standard Augmentation"""
 

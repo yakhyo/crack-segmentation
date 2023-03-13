@@ -3,7 +3,6 @@ from typing import Optional
 import torch
 from torch.nn import functional as F
 
-
 __all__ = ["sigmoid_focal_loss", "cross_entropy", "dice_loss"]
 
 
@@ -41,11 +40,11 @@ def cross_entropy(inputs, targets, weight=None, class_weight=None, reduction="me
 
 
 def dice_loss(
-    inputs: torch.Tensor,
-    targets: torch.Tensor,
-    weight: Optional[torch.Tensor] = None,
-    reduction: str = "none",
-    eps: float = 1e-5,
+        inputs: torch.Tensor,
+        targets: torch.Tensor,
+        weight: Optional[torch.Tensor] = None,
+        reduction: str = "none",
+        eps: float = 1e-5,
 ) -> torch.Tensor:
     inputs = F.softmax(inputs, dim=1)
     targets = F.one_hot(targets, inputs.shape[1]).permute(0, 3, 1, 2)
@@ -73,12 +72,12 @@ def dice_loss(
 
 
 def sigmoid_focal_loss(
-    inputs: torch.Tensor,
-    targets: torch.Tensor,
-    weight: Optional[torch.Tensor] = None,
-    gamma: float = 2.0,
-    alpha: float = 0.25,
-    reduction: str = "mean",
+        inputs: torch.Tensor,
+        targets: torch.Tensor,
+        weight: Optional[torch.Tensor] = None,
+        gamma: float = 2.0,
+        alpha: float = 0.25,
+        reduction: str = "mean",
 ) -> torch.Tensor:
     probs = torch.sigmoid(inputs)
     targets = F.one_hot(targets, inputs.shape[1]).permute(0, 3, 1, 2)

@@ -8,6 +8,7 @@ import torch.nn.functional as F
 
 from crackseg.models import UNet
 from crackseg.utils.dataset import RoadCrack
+from crackseg.utils.general import random_seed
 from crackseg.utils.losses import CrossEntropyLoss, DiceCELoss, DiceLoss, FocalLoss
 from torch.utils.data import DataLoader
 from tqdm import tqdm
@@ -43,7 +44,7 @@ def train(opt, model, device):
     optimizer = torch.optim.RMSprop(model.parameters(), lr=opt.lr, weight_decay=1e-8, momentum=0.9, foreach=True)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="max", patience=5)
     grad_scaler = torch.cuda.amp.GradScaler(enabled=opt.amp)
-    criterion = CrossEntropyLoss()
+    criterion = DiceCELoss()
 
     # Resume
     if pretrained:
@@ -151,7 +152,7 @@ def main(opt):
         f"\t{model.in_channels} input channels\n"
         f"\t{model.out_channels} output channels (number of classes)"
     )
-
+    random_seed()
     # Create folder to save weights
     os.makedirs(opt.save_dir, exist_ok=True)
 

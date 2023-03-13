@@ -14,16 +14,16 @@ class Conv(nn.Module):
     """Convolutional Block"""
 
     def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        kernel_size: int = 1,
-        stride: int = 1,
-        padding: Optional[int] = None,
-        groups: int = 1,
-        dilation: int = 1,
-        bias: bool = False,
-        act: bool = True,
+            self,
+            in_channels: int,
+            out_channels: int,
+            kernel_size: int = 1,
+            stride: int = 1,
+            padding: Optional[int] = None,
+            groups: int = 1,
+            dilation: int = 1,
+            bias: bool = False,
+            act: bool = True,
     ) -> None:
         super().__init__()
         self.conv = nn.Conv2d(
@@ -50,17 +50,17 @@ class DoubleConv(nn.Module):
     """Double Convolutional Block"""
 
     def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        mid_channels: Optional[int] = None,
-        kernel_size: int = 3,
-        stride: int = 1,
-        padding: int = 1,
-        dilation: int = 1,
-        groups: int = 1,
-        bias: bool = False,
-        act: bool = True,
+            self,
+            in_channels: int,
+            out_channels: int,
+            mid_channels: Optional[int] = None,
+            kernel_size: int = 3,
+            stride: int = 1,
+            padding: int = 1,
+            dilation: int = 1,
+            groups: int = 1,
+            bias: bool = False,
+            act: bool = True,
     ) -> None:
         super().__init__()
         if not mid_channels:

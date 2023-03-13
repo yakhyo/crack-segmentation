@@ -8,7 +8,8 @@ from torch.utils import data
 
 class RoadCrack(data.Dataset):
     def __init__(
-        self, root: str, image_size: int = 512, transforms: Augmentation = Augmentation(), mask_suffix: str = "_mask"
+            self, root: str, image_size: int = 512, transforms: Augmentation = Augmentation(),
+            mask_suffix: str = "_mask"
     ) -> None:
         self.root = root
         self.image_size = image_size
