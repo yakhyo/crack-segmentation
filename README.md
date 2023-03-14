@@ -20,14 +20,18 @@
     <tr>
       <td><img src="./assets/CFD_001_image.jpg"></td>
       <td><img src="./assets/CFD_001_gt.jpg"></td>
-      <td>Row 1, Column 2</td>
-      <td>Row 1, Column 2</td>
-      <td>Row 1, Column 2</td>
-      <td>Row 1, Column 2</td>
+      <td><img src="" ></td>
+      <td><img src="./cfd_001_dice.jpg"></td>
+      <td><img src="./cfd_001_dicece.jpg"></td>
+      <td><img src="./cfd_001_focal.jpg"></td>
     </tr>
     <tr>
-      <td>Row 2, Column 1</td>
-      <td>Row 2, Column 2</td>
+     <td><img src="./assets/CFD_019_image.jpg"></td>
+      <td><img src="./assets/CFD_019_gt.jpg"></td>
+      <td><img src="" ></td>
+      <td><img src="./cfd_019_dice.jpg"></td>
+      <td><img src="./cfd_019_dicece.jpg"></td>
+      <td><img src="./cfd_019_focal.jpg"></td>
     </tr>
   </tbody>
 </table>
