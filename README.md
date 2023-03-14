@@ -72,9 +72,3 @@ report bugs, request features, or submit code changes.
 
 The project is licensed under the [MIT license](https://opensource.org/license/mit/).
 
-# dice score
-
-DiceCE: 0.9754
-Dice: 0.9804
-Focal : Dice Score: 0.9679
-CE: Dice Score: 0.9719,
