@@ -165,4 +165,3 @@ If you're going to contribute to this project, please see the [Contributing poli
 ## License
 
 The project is licensed under the [MIT license](LICENSE).
-
