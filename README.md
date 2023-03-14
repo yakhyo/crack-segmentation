@@ -1,13 +1,8 @@
 # Road Crack Segmentation
 
-<div align="center">
-<img src="./assets/image.jpg" width="400px">
-<img src="./assets/output.jpg" width="400px">
-</div>
-
 <table>
   <thead>
-    <tr>
+    <tr align="center">
       <th>Input Image</th>
       <th>Ground Truth</th>
       <th>CE Loss</th>
@@ -17,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr align="center">
       <td><img src="./assets/CFD_001_image.jpg"></td>
       <td><img src="./assets/CFD_001_gt.jpg"></td>
       <td><img src="./cfd_001_ce.jpg" ></td>
@@ -25,13 +20,21 @@
       <td><img src="./cfd_001_dicece.jpg"></td>
       <td><img src="./cfd_001_focal.jpg"></td>
     </tr>
-    <tr>
+    <tr align="center">
      <td><img src="./assets/CFD_019_image.jpg"></td>
       <td><img src="./assets/CFD_019_gt.jpg"></td>
       <td><img src="./cfd_019_ce.jpg"></td>
       <td><img src="./cfd_019_dice.jpg"></td>
       <td><img src="./cfd_019_dicece.jpg"></td>
       <td><img src="./cfd_019_focal.jpg"></td>
+    </tr>
+    <tr align="center">
+      <td>Dice Loss</td>
+      <td></td>
+      <td>0.9719</td>
+      <td>0.9804</td>
+      <td>0.9754</td>
+      <td>0.9679</td>
     </tr>
   </tbody>
 </table>
@@ -73,3 +76,5 @@ The project is licensed under the [MIT license](https://opensource.org/license/m
 
 DiceCE: 0.9754
 Dice: 0.9804
+Focal : Dice Score: 0.9679
+CE: Dice Score: 0.9719,
