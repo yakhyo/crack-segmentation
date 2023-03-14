@@ -15,18 +15,18 @@
     <tr align="center">
       <td><img src="./assets/CFD_001_image.jpg"></td>
       <td><img src="./assets/CFD_001_gt.jpg"></td>
-      <td><img src="./cfd_001_ce.jpg" ></td>
-      <td><img src="./cfd_001_dice.jpg"></td>
-      <td><img src="./cfd_001_dicece.jpg"></td>
-      <td><img src="./cfd_001_focal.jpg"></td>
+      <td><img src="./assets/CFD_001_CE_infer.jpg" ></td>
+      <td><img src="./assets/CFD_001_Dice_infer.jpg"></td>
+      <td><img src="./assets/CFD_001_DiceCE_infer.jpg"></td>
+      <td><img src="./assets/CFD_001_Focal_infer.jpg"></td>
     </tr>
     <tr align="center">
      <td><img src="./assets/CFD_019_image.jpg"></td>
       <td><img src="./assets/CFD_019_gt.jpg"></td>
-      <td><img src="./cfd_019_ce.jpg"></td>
-      <td><img src="./cfd_019_dice.jpg"></td>
-      <td><img src="./cfd_019_dicece.jpg"></td>
-      <td><img src="./cfd_019_focal.jpg"></td>
+      <td><img src="./assets/CFD_019_CE_infer.jpg"></td>
+      <td><img src="./assets/CFD_019_Dice_infer.jpg"></td>
+      <td><img src="./assets/CFD_019_DiceCE_infer.jpg"></td>
+      <td><img src="./assets/CFD_019_Focal_infer.jpg"></td>
     </tr>
     <tr align="center">
       <td>Dice Loss</td>
