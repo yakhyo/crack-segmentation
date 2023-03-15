@@ -2,14 +2,13 @@ import os
 
 import numpy as np
 from crackseg.utils.general import Augmentation
-from PIL import Image, ImageOps
+from PIL import Image
 from torch.utils import data
 
 
 class RoadCrack(data.Dataset):
     def __init__(
-            self, root: str, image_size: int = 512, transforms: Augmentation = Augmentation(),
-            mask_suffix: str = "_mask"
+        self, root: str, image_size: int = 448, transforms: Augmentation = Augmentation(), mask_suffix: str = "_mask"
     ) -> None:
         self.root = root
         self.image_size = image_size
@@ -38,33 +37,10 @@ class RoadCrack(data.Dataset):
         if (np.asarray(mask) > 1).any():
             mask = np.asarray(np.asarray(mask) / 255, dtype=np.byte)
             mask = Image.fromarray(mask)
-
         assert image.size == mask.size, f"`image`: {image.size} and `mask`: {mask.size} are not the same"
 
         # resize
-        image, mask = self.resize_pil(image, mask, image_size=self.image_size)
         if self.transforms is not None:
             image, mask = self.transforms(image, mask)
-
-        return image, mask
-
-    @staticmethod
-    def resize_pil(image, mask, image_size):
-        w, h = image.size
-        scale = min(image_size / w, image_size / h)
-
-        # resize image
-        image = image.resize((int(w * scale), int(h * scale)), resample=Image.BICUBIC)
-        mask = mask.resize((int(w * scale), int(h * scale)), resample=Image.NEAREST)
-
-        # pad size
-        delta_w = image_size - int(w * scale)
-        delta_h = image_size - int(h * scale)
-        top, bottom = delta_h // 2, delta_h - (delta_h // 2)
-        left, right = delta_w // 2, delta_w - (delta_w // 2)
-
-        # pad image
-        image = ImageOps.expand(image, (left, top, right, bottom))
-        mask = ImageOps.expand(mask, (left, top, right, bottom))
 
         return image, mask

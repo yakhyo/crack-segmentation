@@ -44,7 +44,7 @@ def train(opt, model, device):
     optimizer = torch.optim.RMSprop(model.parameters(), lr=opt.lr, weight_decay=1e-8, momentum=0.9, foreach=True)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="max", patience=5)
     grad_scaler = torch.cuda.amp.GradScaler(enabled=opt.amp)
-    criterion = DiceCELoss()
+    criterion = DiceLoss()
 
     # Resume
     if pretrained:
@@ -129,7 +129,7 @@ def validate(model, dataloader, device, conf_threshold=0.5):
 def parse_opt():
     parser = argparse.ArgumentParser(description="Crack Segmentation training arguments")
     parser.add_argument("--data", type=str, default="./data", help="Path to root folder of data")
-    parser.add_argument("--image_size", type=int, default=448, help="Input image size, default: 512")
+    parser.add_argument("--image_size", type=int, default=448, help="Input image size, default: 448")
     parser.add_argument("--save-dir", type=str, default="weights", help="Directory to save weights")
     parser.add_argument("--epochs", type=int, default=10, help="Number of epochs, default: 5")
     parser.add_argument("--batch-size", type=int, default=16, help="Batch size, default: 12")
