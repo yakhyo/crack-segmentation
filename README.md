@@ -29,7 +29,7 @@
       <td><img src="./assets/CFD_019_Focal_infer.jpg"></td>
     </tr>
     <tr align="center">
-      <td>Dice Loss</td>
+      <td>Dice Score</td>
       <td></td>
       <td>0.9719</td>
       <td>0.9804</td>
