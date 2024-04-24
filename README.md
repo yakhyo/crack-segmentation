@@ -114,7 +114,7 @@ Training arguments:
 
 ```
 python train.py -h
-usage: main.py [-h] [--data DATA] [--image_size IMAGE_SIZE] [--save-dir SAVE_DIR] [--epochs EPOCHS] [--batch-size BATCH_SIZE] [--lr LR] [--weights WEIGHTS] [--amp] [--num-classes NUM_CLASSES]
+usage: train.py [-h] [--data DATA] [--image_size IMAGE_SIZE] [--save-dir SAVE_DIR] [--epochs EPOCHS] [--batch-size BATCH_SIZE] [--lr LR] [--weights WEIGHTS] [--amp] [--num-classes NUM_CLASSES]
 
 Crack Segmentation training arguments
 
