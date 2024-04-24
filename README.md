@@ -29,7 +29,7 @@
       <td><img src="./assets/CFD_019_Focal_infer.jpg"></td>
     </tr>
     <tr align="center">
-      <td>Dice Score</td>
+      <td>Dice Score➡️</td>
       <td></td>
       <td>0.9719</td>
       <td>0.9804</td>
@@ -74,14 +74,14 @@ _updating..._)
 Download the project:
 
 ```commandline
-git clone https://github.com/yakhyo/crackseg.git
-cd crackseg
+git clone https://github.com/yakhyo/crack-segmentation.git
+cd crack-segmentation
 ```
 
 Install requirements:
 
 ```commandline
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 Download the weights of the model from [here](https://github.com/yakhyo/crackseg/releases/tag/v0.0.1) into `weights`
@@ -107,11 +107,13 @@ data-|
 ### Train
 
 ```commandline
-python -m tools.main
+python train.py
 ```
+
 Training arguments:
+
 ```
-python -m tools.main -h
+python train.py -h
 usage: main.py [-h] [--data DATA] [--image_size IMAGE_SIZE] [--save-dir SAVE_DIR] [--epochs EPOCHS] [--batch-size BATCH_SIZE] [--lr LR] [--weights WEIGHTS] [--amp] [--num-classes NUM_CLASSES]
 
 Crack Segmentation training arguments
@@ -134,12 +136,15 @@ optional arguments:
 ```
 
 ### Inference
+
 ```commandline
-python -m tools.inference --weights weights/model.pt --input assets/CFD_001_image.jpg
+python inference.py --weights weights/model.pt --input assets/CFD_001_image.jpg
 ```
+
 Inference arguments
+
 ```
-python -m tools.inference -h
+python inference.py -h
 usage: inference.py [-h] [--weights WEIGHTS] [--input INPUT] [--output OUTPUT] [--image-size IMAGE_SIZE] [--view] [--no-save] [--conf-thresh CONF_THRESH]
 
 Crack Segmentation inference arguments
@@ -157,10 +162,11 @@ optional arguments:
                         Confidence threshold for mask
 
 ```
+
 ## Contributing
 
-If you're going to contribute to this project, please see the [Contributing policy](.github/CONTRIBUTING.md) and
-[Code of Conduct](.github/CODE_OF_CONDUCT.md). Do not hesitate to report bugs or request new features.
+Contributions to improve the crack segmentation project are welcome. Feel free to fork the repository and submit pull
+requests,or open issues to suggest features or report bugs.
 
 ## License
 

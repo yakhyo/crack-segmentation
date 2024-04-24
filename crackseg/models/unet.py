@@ -1,7 +1,7 @@
-from typing import Optional
-
 import torch
 import torch.nn as nn
+
+from typing import Optional
 
 
 def auto_pad(kernel_size: int, dilation: int) -> int:
@@ -150,7 +150,7 @@ class UNet(nn.Module):
 
         self.output_conv = nn.Conv2d(in_channels=64, out_channels=out_channels, kernel_size=1)
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         x0 = self.input_conv(x)
 
         x1 = self.down1(x0)

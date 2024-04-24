@@ -1,12 +1,11 @@
-import argparse
 import os
-
-import matplotlib.pyplot as plt
+import argparse
 import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
 import torch
 from crackseg.models import UNet
-
-from PIL import Image
 
 
 def preprocess(image, is_mask):
