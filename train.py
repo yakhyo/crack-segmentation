@@ -1,20 +1,20 @@
-import argparse
-import logging
 import os
+import logging
+import argparse
+from tqdm import tqdm
 from copy import deepcopy
 
 import torch
 import torch.nn.functional as F
+from torch.utils.data import DataLoader
 
 from crackseg.models import UNet
 from crackseg.utils.dataset import RoadCrack
 from crackseg.utils.general import random_seed
 from crackseg.utils.losses import CrossEntropyLoss, DiceCELoss, DiceLoss, FocalLoss
-from torch.utils.data import DataLoader
-from tqdm import tqdm
 
 
-def strip_optimizers(f: str):
+def strip_optimizers(f: str) -> None:
     """Strip optimizer from 'f' to finalize training"""
     x = torch.load(f, map_location="cpu")
     for k in "optimizer", "best_score":
@@ -109,11 +109,11 @@ def train(opt, model, device):
 
 
 @torch.inference_mode()
-def validate(model, dataloader, device, conf_threshold=0.5):
+def validate(model, data_loader, device, conf_threshold=0.5):
     model.eval()
     dice_score = 0
     criterion = DiceLoss()
-    for image, target in tqdm(dataloader, total=len(dataloader)):
+    for image, target in tqdm(data_loader, total=len(data_loader)):
         image, target = image.to(device), target.to(device)
         with torch.no_grad():
             output = model(image)
@@ -123,7 +123,7 @@ def validate(model, dataloader, device, conf_threshold=0.5):
             dice_score += 1 - dice_loss
     model.train()
 
-    return dice_score / len(dataloader), dice_loss
+    return dice_score / len(data_loader), dice_loss
 
 
 def parse_opt():

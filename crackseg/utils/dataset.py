@@ -1,14 +1,19 @@
 import os
-
+import cv2
 import numpy as np
-from crackseg.utils.general import Augmentation
 from PIL import Image
 from torch.utils import data
+
+from crackseg.utils.general import TrainTransforms
 
 
 class RoadCrack(data.Dataset):
     def __init__(
-        self, root: str, image_size: int = 448, transforms: Augmentation = Augmentation(), mask_suffix: str = "_mask"
+            self,
+            root: str,
+            image_size: int = 448,
+            transforms: TrainTransforms = TrainTransforms,
+            mask_suffix: str = "_mask"
     ) -> None:
         self.root = root
         self.image_size = image_size
@@ -18,7 +23,7 @@ class RoadCrack(data.Dataset):
             raise FileNotFoundError(f"Files not found in {root}")
         self.transforms = transforms
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.filenames)
 
     def __getitem__(self, idx):
@@ -32,15 +37,25 @@ class RoadCrack(data.Dataset):
         image = Image.open(image_path)
         mask = Image.open(mask_path)
 
-        # TODO: The mask must be binary. In `Road Crack` dataset the mask image has values between 0 and 255, however
-        #  it was supposed to be 0 and 1. So mask image divided by 255 to make it between 0 and 1.
-        if (np.asarray(mask) > 1).any():
-            mask = np.asarray(np.asarray(mask) / 255, dtype=np.byte)
-            mask = Image.fromarray(mask)
+        mask = to_binary(mask)
+
         assert image.size == mask.size, f"`image`: {image.size} and `mask`: {mask.size} are not the same"
 
-        # resize
+        # TODO: letterbox or some other resizing methods should be used if image is not square.
+        # resize input
+        image = image.resize((self.image_size, self.image_size))
+        mask = mask.resize((self.image_size, self.image_size))
+
+        # transform
         if self.transforms is not None:
             image, mask = self.transforms(image, mask)
 
         return image, mask
+
+
+def to_binary(mask_image):
+    # convert pixels to class indexes
+    _, binary_mask = cv2.threshold(mask_image, 127, 255, cv2.THRESH_BINARY)
+    binary_mask = binary_mask.astype(np.uint8) // 255
+    binary_mask = Image.fromarray(binary_mask)
+    return binary_mask

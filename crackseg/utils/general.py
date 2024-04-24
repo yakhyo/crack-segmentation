@@ -1,6 +1,6 @@
 import random
-
 import numpy as np
+
 import torch
 from torchvision.transforms import functional as F
 
@@ -11,7 +11,7 @@ def random_seed(seed=42):
     random.seed(seed)
 
 
-class Augmentation:
+class TrainTransforms:
     """Standard Augmentation"""
 
     def __init__(self, hflip_prop: float = 0.5) -> None:
@@ -60,7 +60,7 @@ class Compose:
 class RandomHorizontalFlip:
     """Random horizontal flip"""
 
-    def __init__(self, flip_prob):
+    def __init__(self, flip_prob: float = 0.5) -> None:
         self.flip_prob = flip_prob
 
     def __call__(self, image, target):
