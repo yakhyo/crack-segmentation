@@ -21,7 +21,7 @@ class RoadCrack(data.Dataset):
         self.filenames = [os.path.splitext(filename)[0] for filename in os.listdir(os.path.join(self.root, "images"))]
         if not self.filenames:
             raise FileNotFoundError(f"Files not found in {root}")
-        self.transforms = transforms
+        self.transforms = transforms()
 
     def __len__(self) -> int:
         return len(self.filenames)
@@ -54,8 +54,14 @@ class RoadCrack(data.Dataset):
 
 
 def to_binary(mask_image):
-    # convert pixels to class indexes
-    _, binary_mask = cv2.threshold(mask_image, 127, 255, cv2.THRESH_BINARY)
-    binary_mask = binary_mask.astype(np.uint8) // 255
+    # Convert PIL Image to numpy array
+    mask_array = np.array(mask_image)
+
+    # Apply threshold directly to create a binary image with values 0 and 255
+    _, binary_mask = cv2.threshold(mask_array, 127, 255, cv2.THRESH_BINARY)
+    binary_mask = binary_mask.astype(np.uint8) / 255
+
+    # Convert numpy array back to PIL Image, already in binary format
     binary_mask = Image.fromarray(binary_mask)
+
     return binary_mask

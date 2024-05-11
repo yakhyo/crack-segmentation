@@ -109,7 +109,7 @@ class FocalLoss(nn.Module):
             inputs: torch.Tensor,
             targets: torch.Tensor,
             weight: Optional[torch.Tensor] = None,
-    ) -> torch.Torch:
+    ) -> torch.Tensor:
         loss = self.loss_weight * sigmoid_focal_loss(
             inputs,
             targets,
