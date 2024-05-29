@@ -1,4 +1,5 @@
 # Road Crack Segmentation using UNet
+![Downloads](https://img.shields.io/github/downloads/yakhyo/crack-segmentation/total)
 
 <table>
   <thead>
