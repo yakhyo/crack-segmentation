@@ -1,5 +1,7 @@
 # Road Crack Segmentation using UNet
-![Downloads](https://img.shields.io/github/downloads/yakhyo/crack-segmentation/total)  [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/yakhyo/crack-segmentation)
+![Downloads](https://img.shields.io/github/downloads/yakhyo/crack-segmentation/total)
+[![GitHub Repo stars](https://img.shields.io/github/stars/yakhyo/crack-segmentation)](https://github.com/yakhyo/crack-segmentation/stargazers)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/yakhyo/crack-segmentation)
 
 <table>
   <thead>
