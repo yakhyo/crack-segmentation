@@ -5,7 +5,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 import torch
-from crackseg.models import UNet
+from models import UNet
 
 
 def preprocess(image, is_mask):

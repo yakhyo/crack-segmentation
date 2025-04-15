@@ -8,10 +8,10 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from crackseg.models import UNet
-from crackseg.utils.dataset import RoadCrack
-from crackseg.utils.general import random_seed
-from crackseg.utils.losses import CrossEntropyLoss, DiceCELoss, DiceLoss, FocalLoss
+from models import UNet
+from utils.dataset import RoadCrack
+from utils.general import random_seed
+from utils.losses import CrossEntropyLoss, DiceCELoss, DiceLoss, FocalLoss
 
 
 def strip_optimizers(f: str) -> None:

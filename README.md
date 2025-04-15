@@ -61,10 +61,10 @@ using [Crack Segmentation dataset](https://www.kaggle.com/datasets/lakshaymiddha
 evaluated the model's performance using different loss functions and compared their results. We have implemented
 following loss functions:
 
-- [**Cross Entropy Loss**](./crackseg/utils/losses.py)
-- [**Dice Loss**]((./crackseg/utils/losses.py))
-- [**Dice Cross Entropy Loss**]((./crackseg/utils/losses.py))
-- [**Focal Loss**]((./crackseg/utils/losses.py))
+- [**Cross Entropy Loss**](./utils/losses.py)
+- [**Dice Loss**]((./utils/losses.py))
+- [**Dice Cross Entropy Loss**]((./utils/losses.py))
+- [**Focal Loss**]((./utils/losses.py))
 
 We trained the model using above-mentioned loss functions and evaluated their performance by **Dice coefficient** (`dice
 score = 1 - dice loss`, so our evaluation metric may not be right metric to compare those models with each other)
@@ -87,8 +87,8 @@ Install requirements:
 pip install -r requirements.txt
 ```
 
-Download the weights of the model from [here](https://github.com/yakhyo/crackseg/releases/tag/v0.0.1) into `weights`
-folder. Model weights trained using Dice Loss is provided inside `weights` folder as `model.pt`
+Download the weights of the model from [here](https://github.com/yakhyo/crack-segmentation/releases/tag/v0.0.1) into `weights`
+folder.
 
 ## Usage
 
